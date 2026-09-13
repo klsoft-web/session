@@ -27,6 +27,15 @@ final class NullSession implements SessionInterface
 
     public function regenerateId(): void {}
 
+    public function createId(): string {
+        $sessionId = session_create_id();
+        if (!$sessionId) {
+            throw new SessionException('Failed to create ID.');
+        }
+
+        return $sessionId;
+    }
+
     public function discard(): void {}
 
     public function all(): array

@@ -133,6 +133,19 @@ final class Session implements SessionInterface
         }
     }
 
+    /**
+     * @throw SessionException When create session id is failed.
+     */
+    public function createId(): string
+    {
+        $sessionId = session_create_id();
+        if (!$sessionId) {
+            throw new SessionException('Failed to create ID.');
+        }
+
+        return $sessionId;
+    }
+
     public function discard(): void
     {
         if ($this->isActive()) {
