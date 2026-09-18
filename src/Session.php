@@ -84,7 +84,7 @@ final class Session implements SessionInterface
     }
 
     /**
-     * @throw SessionException When start session is failed.
+     * @throws SessionException When start session is failed.
      */
     public function open(): void
     {
@@ -134,7 +134,7 @@ final class Session implements SessionInterface
     }
 
     /**
-     * @throw SessionException When create session id is failed.
+     * @throws SessionException When create session id is failed.
      */
     public function createId(): string
     {
