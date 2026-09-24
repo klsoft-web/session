@@ -58,11 +58,6 @@ final class MockArraySessionStorage implements SessionInterface
         $this->id = $this->generateId();
     }
 
-    public function createId(): string
-    {
-        return $this->generateId();
-    }
-
     public function discard(): void
     {
         $this->close();

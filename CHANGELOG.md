@@ -4,7 +4,7 @@
 
 - Enh #86: Remove `yiisoft/cookies` dependency (@vjik)
 - Bug #86: `NullSession::getCookieParameters()` now returns proper cookie parameters instead of an empty array (@vjik)
-- Bug #25: To prevent the same session ID being received for both Swoole and Road Runner, add the `createId()` method of `SessionInterface` and then use it in `SessionMiddleware` when `requestSessionId` is `null` (@klsoft-web)
+- Bug #25: To prevent the same session ID being received for both Swoole and Road Runner, add the private `createId()` method of `Session` and then use it when  the `sessionId` is `null` (@klsoft-web)
 
 ## 3.0.2 August 26, 2026
 

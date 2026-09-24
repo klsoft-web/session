@@ -94,11 +94,6 @@ final class SessionTest extends TestCase
         self::assertNotEquals($id, $session->getId());
     }
 
-    public function testCreateID(): void
-    {
-        self::assertNotEquals($this->getSession()->createId(), '');
-    }
-
     public function testDiscard(): void
     {
         $session = $this->getSession();

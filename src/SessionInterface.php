@@ -68,11 +68,6 @@ interface SessionInterface
     public function regenerateId(): void;
 
     /**
-     * Create session ID.
-     */
-    public function createId(): string;
-
-    /**
      * Discard session changes and close session.
      */
     public function discard(): void;

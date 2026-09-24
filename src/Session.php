@@ -134,7 +134,7 @@ final class Session implements SessionInterface
     /**
      * @throws SessionException When create session id is failed.
      */
-    public function createId(): string
+    private function createId(): string
     {
         $sessionId = session_create_id();
         if (!$sessionId) {

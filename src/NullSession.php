@@ -27,10 +27,6 @@ final class NullSession implements SessionInterface
 
     public function regenerateId(): void {}
 
-    public function createId(): string {
-        return '';
-    }
-
     public function discard(): void {}
 
     public function all(): array
