@@ -92,9 +92,7 @@ final class Session implements SessionInterface
             return;
         }
 
-        if ($this->sessionId !== null) {
-            session_id($this->sessionId);
-        }
+        session_id($this->sessionId ?? $this->createId());
 
         try {
             session_start($this->options);

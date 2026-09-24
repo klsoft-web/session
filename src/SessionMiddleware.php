@@ -28,8 +28,8 @@ final class SessionMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $requestSessionId = $this->getSessionIdFromRequest($request);
-        if ($this->session->getId() === null) {
-            $this->session->setId($requestSessionId ?? $this->session->createId());
+        if ($requestSessionId !== null && $this->session->getId() === null) {
+            $this->session->setId($requestSessionId);
         }
 
         try {
