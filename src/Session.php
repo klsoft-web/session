@@ -131,19 +131,6 @@ final class Session implements SessionInterface
         }
     }
 
-    /**
-     * @throws SessionException When create session id is failed.
-     */
-    private function createId(): string
-    {
-        $sessionId = session_create_id();
-        if (!$sessionId) {
-            throw new SessionException('Failed to create ID.');
-        }
-
-        return $sessionId;
-    }
-
     public function discard(): void
     {
         if ($this->isActive()) {
@@ -230,5 +217,20 @@ final class Session implements SessionInterface
     public function setId(string $sessionId): void
     {
         $this->sessionId = $sessionId;
+    }
+
+    /**
+     * @throws SessionException When create session id is failed.
+     */
+    private function createId(): string
+    {
+        $sessionId = session_create_id();
+        if (!$sessionId) {
+            // @codeCoverageIgnoreStart
+            throw new SessionException('Failed to create ID.');
+            // @codeCoverageIgnoreEnd
+        }
+
+        return $sessionId;
     }
 }

@@ -94,13 +94,17 @@ final class SessionTest extends TestCase
         self::assertNotEquals($id, $session->getId());
     }
 
-    public function testCreateIdWhenSessionIdIsNull(): void
+    public function testOpenDoesNotReuseIdOfClosedSession(): void
     {
-        $session = $this->getSession();
-        $initialId = $session->getId();
-        $session->open();
-        self::assertNull($initialId);
-        self::assertNotNull($session->getId());
+        $firstSession = $this->getSession();
+        $firstSession->open();
+        $firstId = $firstSession->getId();
+        $firstSession->close();
+
+        $this->session = new Session();
+        $this->session->open();
+
+        self::assertNotSame($firstId, $this->session->getId());
     }
 
     public function testDiscard(): void
