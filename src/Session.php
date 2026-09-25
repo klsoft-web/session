@@ -225,6 +225,7 @@ final class Session implements SessionInterface
     private function createId(): string
     {
         $sessionId = session_create_id();
+        /** @psalm-suppress TypeDoesNotContainType PHP 8.0 stub in Psalm lacks `false` in the return type. */
         if ($sessionId === false) {
             // @codeCoverageIgnoreStart
             throw new SessionException('Failed to create ID.');
