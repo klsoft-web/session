@@ -96,15 +96,15 @@ final class SessionTest extends TestCase
 
     public function testOpenDoesNotReuseIdOfClosedSession(): void
     {
-        $firstSession = $this->getSession();
+        $firstSession = new Session();
         $firstSession->open();
         $firstId = $firstSession->getId();
         $firstSession->close();
 
-        $this->session = new Session();
-        $this->session->open();
+        $secondSession = new Session();
+        $secondSession->open();
 
-        self::assertNotSame($firstId, $this->session->getId());
+        self::assertNotSame($firstId, $secondSession->getId());
     }
 
     public function testDiscard(): void
