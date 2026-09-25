@@ -225,7 +225,7 @@ final class Session implements SessionInterface
     private function createId(): string
     {
         $sessionId = session_create_id();
-        if (!$sessionId) {
+        if ($sessionId === false) {
             // @codeCoverageIgnoreStart
             throw new SessionException('Failed to create ID.');
             // @codeCoverageIgnoreEnd
